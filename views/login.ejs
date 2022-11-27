@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include("partials/head") %>
+</head>
+<body>
+  <%- include("partials/nav") %>
+
+  <section class="login">
+    <div class="container">
+      <h2>Login Page</h2>
+
+      <% if (errors.length) { %>
+      <div class="alert alert-danger my-3" role="alert"><%= errors[0] %></div>
+      <% } %>
+
+      <% if (infos.length) { %>
+      <div class="alert alert-light my-3" role="alert"><%= infos[0] %></div>
+      <% } %>
+
+      <form action="/login" method="POST">
+        <h3>Log into your account</h3>
+        <div class="mt-2">
+          <label for="email">Email</label>
+          <input type="email" name="email" placeholder="Enter your email">
+        </div>
+        <div class="mt-2">
+          <label for="password">Password</label>
+          <input type="password" name="password" placeholder="Enter your password">
+        </div>
+        <div class="mt-2">
+          <button type="submit" class="btn btn-primary m-1 px-5">Log in</button>
+        </div>
+      </form>
+
+      <div>
+        <p>Do not have an account yet ?</p>
+        <a href="/register">Create it!</a>
+      </div>
+    </div>
+  </section>
+
+  <%- include("partials/scripts") %>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include("partials/head") %>
+</head>
+<body>
+  <%- include("partials/nav") %>
+
+  <section class="users">
+    <div class="container">
+      <h2>Users page</h2>
+
+      <% if (infos.length) { %>
+      <div class="alert alert-light alert-dismissible fade show" role="alert">
+        <p><%= infos[0] %></p>
+        <button type="button" class="btn-close py-3" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      <% } %>
+
+    </div>
+  </section>
+
+  <%- include("partials/scripts") %>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include("partials/head") %>
+</head>
+<body>
+  <%- include("partials/nav") %>
+
+  <section class="register">
+    <div class="container">
+      <h2>Register Page</h2>
+
+      <% if (errors.length) { %>
+      <div class="alert alert-danger my-3" role="alert"><%= errors[0] %></div>
+      <% } %>
+      
+      <form action="/register" method="POST">
+        <h3>Create your account</h3>
+        <div class="mt-2">
+          <label for="name">Name</label>
+          <input type="text" name="name" placeholder="Enter your name">
+        </div>
+        <div class="mt-2">
+          <label for="firstname">Firstname</label>
+          <input type="text" name="firstname" placeholder="Enter your firstname">
+        </div>
+        <div class="mt-2">
+          <label for="email">Email</label>
+          <input type="email" name="email" placeholder="Enter your email">
+        </div>
+        <div class="mt-2">
+          <label for="password">Password</label>
+          <input type="password" name="password" placeholder="Enter your password">
+        </div>
+        <div class="mt-2">
+          <button type="submit" class="btn btn-primary m-1 px-5">Create</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <%- include("partials/scripts") %>
+</body>
+</html>

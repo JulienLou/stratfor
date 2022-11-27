@@ -1,0 +1,18 @@
+{
+  "host": "localhost:3000",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:107.0) Gecko/20100101 Firefox/107.0",
+  "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+  "accept-language": "fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3",
+  "accept-encoding": "gzip, deflate, br",
+  "content-type": "application/x-www-form-urlencoded",
+  "content-length": "46",
+  "origin": "http://localhost:3000",
+  "connection": "keep-alive",
+  "referer": "http://localhost:3000/login",
+  "cookie": "connect.sid=s%3AQaSyeoVvD3P94vfnT_z_CIxNyuKqv4iq.ewf6q1hq6lLuYgJLFXZrCES%2F3cJ0mvrlceqDFM4JRYw",
+  "upgrade-insecure-requests": "1",
+  "sec-fetch-dest": "document",
+  "sec-fetch-mode": "navigate",
+  "sec-fetch-site": "same-origin",
+  "sec-fetch-user": "?1"
+}
