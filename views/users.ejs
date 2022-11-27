@@ -8,20 +8,37 @@
 
   <section class="users">
     <div class="container">
-      <h2>Users page</h2>
+      <h2 class="users-title">Users</h2>
 
       <% if (infos.length) { %>
-      <div class="alert alert-light alert-dismissible fade show" role="alert">
+      <div class="alert alert-info alert-dismissible fade show mt-2" role="alert">
         <p><%= infos[0] %></p>
         <button type="button" class="btn-close py-3" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
       <% } %>
 
-      <div class="users-list">
+      <div class="users-list mt-5">
         <% users.forEach((user, index) => { %>
-        <div class="my-1 bg-light rounded">
-          <h2><%= user.name %></h2>
-        </div>
+        <a class="d-block my-1" data-bs-toggle="collapse" href="#collapse<%= index %>" role="button" aria-expanded="false" aria-controls="collapse<%= index %>">
+          <div class="p-2 bg-rise-blue rounded">
+
+            <div class="d-flex justify-content-between align-items-center flex-wrap">
+              
+              <div class="d-flex justify-content-center align-items-center">
+                <img src="/img/rounded-user.png" alt="user photo">
+                <h2><%= user.firstname %> <%= user.name %></h2>
+              </div>
+              <div><%= user.email %></div>
+
+            </div>
+            <div class="collapse" id="collapse<%= index %>">
+              <div class="py-3">
+                <p>Member since : <%= user.createdAt.toString().substring(4, 15) %></p>
+              </div>
+            </div>
+
+          </div>
+        </a>
         <% }) %>
       </div>
 

@@ -8,31 +8,34 @@
 
   <section class="register">
     <div class="container">
-      <h2>Register Page</h2>
 
       <% if (errors.length) { %>
       <div class="alert alert-danger my-3" role="alert"><%= errors[0] %></div>
       <% } %>
       
-      <form action="/register" method="POST">
+      <form action="/register" method="POST" class="bg-dark-blue">
         <h3>Create your account</h3>
-        <div class="mt-2">
-          <label for="name">Name</label>
-          <input type="text" name="name" placeholder="Enter your name">
+        <div class="inputs-col">
+          <div class="input-col">
+            <label for="name">Name</label>
+            <input type="text" name="name" placeholder="Enter your name" class="form-control">
+          </div>
+          <div class="input-col">
+            <label for="firstname">Firstname</label>
+            <input type="text" name="firstname" placeholder="Enter your firstname" class="form-control">
+          </div>
         </div>
-        <div class="mt-2">
-          <label for="firstname">Firstname</label>
-          <input type="text" name="firstname" placeholder="Enter your firstname">
+        <div class="inputs-col">
+          <div class="input-col">
+            <label for="email">Email</label>
+            <input type="email" name="email" placeholder="Enter your email" class="form-control">
+          </div>
+          <div class="input-col">
+            <label for="password">Password (must contain between 6 and 20 characters)</label>
+            <input type="password" name="password" placeholder="Enter your password" class="form-control">
+          </div>
         </div>
-        <div class="mt-2">
-          <label for="email">Email</label>
-          <input type="email" name="email" placeholder="Enter your email">
-        </div>
-        <div class="mt-2">
-          <label for="password">Password</label>
-          <input type="password" name="password" placeholder="Enter your password">
-        </div>
-        <div class="mt-2">
+        <div class="mt-5 d-flex justify-content-center">
           <button type="submit" class="btn btn-primary m-1 px-5">Create</button>
         </div>
       </form>

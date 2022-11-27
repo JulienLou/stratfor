@@ -1,94 +1,124 @@
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
+:root {
+  --darkblue: #041c4c;
+  --bluemedium: rgb(25, 93, 136);
+  --bluelogo: rgb(8, 119, 187);
+  --white: white;
+  --orange: rgb(255, 204, 49);
 }
 
 body{
-  background-color: rgb(28, 38, 46);
+  background-color: rgb(18, 27, 45);
   color: rgb(198, 205, 207);
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 14px;
 }
 
-/* ------------ Nav ------------------------------------------------------------ */
+.bg-rise-blue{
+  background: linear-gradient(rgb(247, 251, 255), #bcddff);
+}
 
-/* nav button{
+.bg-rise-blue:hover{
+  background: var(--white);
+}
 
-} */
+.bg-dark-blue{
+  background: linear-gradient(-30deg, #041c4c, #08417b, #041c4c);
+}
 
+/* ------------ Nav ----------------------------------------------------------------- */
+nav .navbar-brand{
+  display: flex;
+  align-items: center;
+  font-family: 'Trebuchet MS', sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+nav .navbar-brand span{
+  color: var(--bluelogo);
+}
+
+nav .navbar-brand img{
+  width: 20px;
+  margin-right: .2rem;
+}
 
 
 /* ------------ Register ------------------------------------------------------------ */
+.register{
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+}
+
 .register form{
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  padding: 1rem;
-  margin: 1rem 0;
+  padding: 2rem;
+  border: 3px solid var(--white);
 }
 
 .register form h3{
   font-size: 1.8rem;
+  color: var(--white);
+}
+
+.register .inputs-col{
+  display: flex;
+  justify-content: flex-start;
+  margin: 1rem 0;
+}
+
+.register .input-col{
+  width: 100%;
+  padding: 0 1rem;
 }
 
 .register form label{
   display: block;
-  margin: .3rem;
+  margin: 0 .3rem;
 }
 
 .register form input{
   margin: 0 .3rem;
+  width: 100%;
 }
 
-/* ------------ Register ------------------------------------------------------------ */
+@media (max-width: 992px){ 
+  .register .inputs-col{
+    flex-wrap: wrap;
+  }
+}
+
+/* ------------ Login ------------------------------------------------------------ */
+.login{
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+}
+
+.login-frame{
+  display: flex;
+  justify-content: flex-start;
+  border: 3px solid var(--white);
+}
+
+.login .form-container{
+  width: 70%;
+}
+
 .login form{
-  background-color: rgba(71, 32, 102, 0.685);
-  border: 2px solid rgb(255, 182, 48);
-  border-radius: 8px;
-  padding: 1rem;
-  margin: 1rem 0;
+  padding: 2rem;
+}
+
+.login .office-img{
+  background: url('../img/login-office.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
 }
 
 .login form h3{
   font-size: 1.8rem;
+  color: var(--white);
 }
 
 .login form label{
@@ -98,4 +128,50 @@ body{
 
 .login form input{
   margin: 0 .3rem;
+  width: 100%;
+}
+
+@media (max-width: 992px){ 
+  .login-frame{
+    flex-wrap: wrap-reverse;
+  }
+
+  .login .form-container{
+    width: 100%;
+  }
+}
+
+
+/* ------------ Users ------------------------------------------------------------ */
+
+.users-title{
+  font-size: 1.8rem;
+  color: var(--orange);
+  font-weight: bold;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.users-list{
+  color: var(--bluemedium);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.users-list a{
+  text-decoration: none;
+  color: inherit;
+}
+
+.user-card{
+  width: fit-content;
+}
+
+.users-list h2{
+  font-weight: bold;
+  font-size: 1rem;
+  margin: 0 .6rem;
+}
+
+.users-list img{
+  width: 30px;
 }

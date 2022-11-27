@@ -8,7 +8,6 @@
 
   <section class="login">
     <div class="container">
-      <h2>Login Page</h2>
 
       <% if (errors.length) { %>
       <div class="alert alert-danger my-3" role="alert"><%= errors[0] %></div>
@@ -17,26 +16,32 @@
       <% if (infos.length) { %>
       <div class="alert alert-light my-3" role="alert"><%= infos[0] %></div>
       <% } %>
-
-      <form action="/login" method="POST">
-        <h3>Log into your account</h3>
-        <div class="mt-2">
-          <label for="email">Email</label>
-          <input type="email" name="email" placeholder="Enter your email">
+      <h2>Welcome!</h2>
+      <div class="login-frame">
+        <div class="office-img"></div>
+        <div class="form-container bg-dark-blue">
+          <form action="/login" method="POST">
+            <h3>Log into your account</h3>
+            <div class="mt-5">
+              <label for="email">Email</label>
+              <input type="email" name="email" placeholder="Enter your email" class="form-control">
+            </div>
+            <div class="mt-2">
+              <label for="password">Password</label>
+              <input type="password" name="password" placeholder="Enter your password" class="form-control">
+            </div>
+            <div class="mt-4 d-flex justify-content-center">
+              <button type="submit" class="btn btn-primary m-1 px-5">Log in</button>
+            </div>
+            <div class="mt-4 text-center p-2">
+              <p class="mb-2">Do not have an account yet ?</p>
+              <a href="/register" class="btn btn-sm btn-outline-light m-1 px-4">Create it!</a>
+            </div>
+          </form>
         </div>
-        <div class="mt-2">
-          <label for="password">Password</label>
-          <input type="password" name="password" placeholder="Enter your password">
-        </div>
-        <div class="mt-2">
-          <button type="submit" class="btn btn-primary m-1 px-5">Log in</button>
-        </div>
-      </form>
-
-      <div>
-        <p>Do not have an account yet ?</p>
-        <a href="/register">Create it!</a>
+        
       </div>
+
     </div>
   </section>
 

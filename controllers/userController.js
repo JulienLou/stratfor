@@ -3,15 +3,13 @@ const User = require("../models/User");
 const validator = require("validator");
 const striptags = require('striptags');
 const bcrypt = require('bcrypt');
-const path = require("path");
 const jwt = require('jsonwebtoken');
 const { send } = require("process");
 const secretToken = process.env.S_TOKEN;
-//const fs = require("fs");
 
 // users page
 const showUsers = async(req, res) => {
-  const usersFound = await User.find();
+  const usersFound = await User.find().select("-password, -authTokens");
   res.render("users", { 
     title: "Users",
     users: usersFound,
@@ -53,16 +51,13 @@ const register = async(req, res) => {
     return;
   };
 
-  if(!validator.isLength(password, {min:6, max: 25})){
-    req.flash("error", "Your password must contain between 6 and 25 characters.");
+  if(!validator.isLength(password, {min:6, max: 20})){
+    req.flash("error", "Your password must contain between 6 and 20 characters.");
     res.redirect("register");
     return;
   }
 
   const hashedPassword = await bcrypt.hash(password, 10);
-
-  // NO TOKEN HERE
-  // MUST BE AT LOGIN MOMENT
 
   await User.create({
     name: name, 
@@ -118,14 +113,10 @@ const login = async(req, res) => {
 
   res.cookie('authorization', 'Bearer '+ authToken, {httpOnly: true});
   req.flash("info", "You are logged in, you can now visit the list of users."); 
-
   res.redirect("users");
-  // res.render("login", { 
-  //   title: "Login", 
-  //   errors: req.flash("error")
-  // });
 };
 
+// logout
 const logout =  async(req, res) => {
   try {
     req.user.authTokens = req.user.authTokens.filter((authToken) => {
