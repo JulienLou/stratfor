@@ -14,14 +14,19 @@
       <% } %>
 
       <% if (infos.length) { %>
-      <div class="alert alert-light my-3" role="alert"><%= infos[0] %></div>
+      <div class="alert alert-info alert-dismissible fade show mt-2" role="alert">
+        <p><%= infos[0] %></p>
+        <button type="button" class="btn-close py-3" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
       <% } %>
+      
       <h2>Welcome!</h2>
       <div class="login-frame">
         <div class="office-img"></div>
         <div class="form-container bg-dark-blue">
           <form action="/login" method="POST">
             <h3>Log into your account</h3>
+
             <div class="mt-5">
               <label for="email">Email</label>
               <input type="email" name="email" placeholder="Enter your email" class="form-control">

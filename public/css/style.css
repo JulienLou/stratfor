@@ -1,7 +1,7 @@
 :root {
   --darkblue: #041c4c;
   --bluemedium: rgb(25, 93, 136);
-  --bluelogo: rgb(8, 119, 187);
+  --bluelogo: #2a86db;
   --white: white;
   --orange: rgb(255, 204, 49);
 }
@@ -43,6 +43,14 @@ nav .navbar-brand img{
   margin-right: .2rem;
 }
 
+nav .nav-link{
+  color: var(--bluelogo);
+  font-size: .9rem;
+}
+
+nav .nav-link:hover{
+  color: var(--darkblue);
+}
 
 /* ------------ Register ------------------------------------------------------------ */
 .register{
@@ -52,8 +60,20 @@ nav .navbar-brand img{
 }
 
 .register form{
+  position: relative;
   padding: 2rem;
   border: 3px solid var(--white);
+}
+
+.register .s-logo{
+  position: absolute;
+  width: 40px;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--white);
+  border-radius: 30px;
+  border: 5px solid var(--white);
 }
 
 .register form h3{

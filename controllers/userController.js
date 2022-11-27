@@ -9,7 +9,7 @@ const secretToken = process.env.S_TOKEN;
 
 // users page
 const showUsers = async(req, res) => {
-  const usersFound = await User.find().select("-password, -authTokens");
+  const usersFound = await User.find().select("-password, -authTokens").sort({name: 'asc', firstname: 'asc'});
   res.render("users", { 
     title: "Users",
     users: usersFound,
@@ -66,6 +66,7 @@ const register = async(req, res) => {
     password: hashedPassword
   });
 
+  req.flash("info", "Your account was created. Now, log in to access Stratfor content");
   res.redirect("login");
 };
 

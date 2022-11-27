@@ -14,7 +14,9 @@ const authentication = async(req, res, next) => {
 
     next();
   }catch(err){
-    res.status(401).send("Authentication is required");
+    //res.status(401).send("Authentication is required");
+    req.flash("error", "You must authenticate to access the contents of Stratfor...");
+    res.redirect("login");
   }
 }
 
