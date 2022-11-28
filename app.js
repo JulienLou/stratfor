@@ -20,7 +20,7 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static("public"));
 
-app.set('trust proxy', 1); // trust first proxy
+app.set('trust proxy', 1);
 app.use(session({
   secret: secretKey,
   resave: false,
@@ -37,14 +37,14 @@ app.use("/", userRoutes);
 
 app.use((req, res) => {
   res.status(404);
-  res.send("Page non trouvée");
+  res.redirect("page404");
 });
 
-// app.use((err, req, res, next) => {           // when ready to catchAsync()
-//   console.log(err);
-//   res.status(500);
-//   res.send("Internal Server Error");
-// });
+app.use((err, req, res, next) => { // when ready to catchAsync()
+  console.log(err);
+  res.status(500);
+  res.send("Internal Server Error");
+});
 
 app.listen(port, () => {
   console.log(`App is running at: http://localhost:${port}`);

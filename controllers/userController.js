@@ -1,32 +1,31 @@
 const User = require("../models/User");
-//const catchAsync = require("../helpers/catchAsync");
+const catchAsync = require("../helpers/catchAsync");
 const validator = require("validator");
 const striptags = require('striptags');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const { send } = require("process");
 const secretToken = process.env.S_TOKEN;
 
 // users page
-const showUsers = async(req, res) => {
+const showUsers = catchAsync(async(req, res) => {
   const usersFound = await User.find().select("-password, -authTokens").sort({name: 'asc', firstname: 'asc'});
   res.render("users", { 
     title: "Users",
     users: usersFound,
     infos: req.flash("info")
   });
-};
+});
 
 // register form page
-const registerForm = async(req, res) => {
+const registerForm = catchAsync(async(req, res) => {
   res.render("register", { 
     title: "Register", 
     errors: req.flash("error")
   });
-};
+});
 
 // create user account
-const register = async(req, res) => {
+const register = catchAsync(async(req, res) => {
   if(!req.body.name || !req.body.firstname || !req.body.email || !req.body.password){
     req.flash("error", "Registration error, please check your information...");
     res.redirect("register");
@@ -68,19 +67,19 @@ const register = async(req, res) => {
 
   req.flash("info", "Your account was created. Now, log in to access Stratfor content");
   res.redirect("login");
-};
+});
 
 // login form page
-const loginForm = async(req, res) => {
+const loginForm = catchAsync(async(req, res) => {
   res.render("login", { 
     title: "Login", 
     errors: req.flash("error"),
     infos: req.flash("info")
   });
-};
+});
 
 // login form submit
-const login = async(req, res) => {
+const login = catchAsync(async(req, res) => {
 
   if(!req.body.email || !req.body.password){
     req.flash("error", "Connection error, please check your information");
@@ -104,7 +103,7 @@ const login = async(req, res) => {
     return;
   }
 
-  // Token
+  // auth token
   const userID = user._id.toString();
   let authToken = jwt.sign({ _id: userID}, secretToken);
 
@@ -115,10 +114,10 @@ const login = async(req, res) => {
   res.cookie('authorization', 'Bearer '+ authToken, {httpOnly: true});
   req.flash("info", "You are logged in, you can now visit the list of users."); 
   res.redirect("users");
-};
+});
 
 // logout
-const logout =  async(req, res) => {
+const logout = catchAsync(async(req, res) => {
   try {
     req.user.authTokens = req.user.authTokens.filter((authToken) => {
       return authToken.authToken !== req.authToken;
@@ -130,7 +129,15 @@ const logout =  async(req, res) => {
   } catch (err) {
    res.status(500).send(); 
   }
-};
+});
+
+// error 404
+const page404 = catchAsync(async(req, res) => {
+  res.status(404); 
+  res.render("404page", { 
+    title: "Error 404",
+  });
+});
 
 module.exports = {
   showUsers,
@@ -138,5 +145,6 @@ module.exports = {
   register,
   loginForm,
   login,
-  logout
+  logout,
+  page404
 }

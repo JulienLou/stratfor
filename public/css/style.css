@@ -13,6 +13,8 @@ body{
   font-size: 14px;
 }
 
+/* ---------- Golbal */
+
 .bg-rise-blue{
   background: linear-gradient(rgb(247, 251, 255), #bcddff);
 }
@@ -25,7 +27,7 @@ body{
   background: linear-gradient(-30deg, #041c4c, #08417b, #041c4c);
 }
 
-/* ------------ Nav ----------------------------------------------------------------- */
+/* ------------ Nav  */
 nav .navbar-brand{
   display: flex;
   align-items: center;
@@ -52,7 +54,7 @@ nav .nav-link:hover{
   color: var(--darkblue);
 }
 
-/* ------------ Register ------------------------------------------------------------ */
+/* ------------ Register  */
 .register{
   min-height: calc(100vh - 80px);
   display: flex;
@@ -108,7 +110,7 @@ nav .nav-link:hover{
   }
 }
 
-/* ------------ Login ------------------------------------------------------------ */
+/* ------------ Login  */
 .login{
   min-height: calc(100vh - 80px);
   display: flex;
@@ -162,7 +164,7 @@ nav .nav-link:hover{
 }
 
 
-/* ------------ Users ------------------------------------------------------------ */
+/* ------------ Users  */
 
 .users-title{
   font-size: 1.8rem;
@@ -194,4 +196,11 @@ nav .nav-link:hover{
 
 .users-list img{
   width: 30px;
+}
+
+/* ------------ 404page  */
+
+.page-404 .message-404{
+  background-color: var(--darkblue);
+  border: 3px solid var(--white);
 }

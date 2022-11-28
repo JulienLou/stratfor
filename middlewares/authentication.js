@@ -1,8 +1,9 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
+const catchAsync = require("../helpers/catchAsync");
 const secretToken = process.env.S_TOKEN;
 
-const authentication = async(req, res, next) => {
+const authentication = catchAsync(async(req, res, next) => {
   try{
     const authToken =  req.cookies.authorization.replace("Bearer ", "");
     const decodedToken = jwt.verify(authToken, secretToken);
@@ -14,10 +15,10 @@ const authentication = async(req, res, next) => {
 
     next();
   }catch(err){
-    //res.status(401).send("Authentication is required");
+    res.status(401);
     req.flash("error", "You must authenticate to access the contents of Stratfor...");
     res.redirect("login");
   }
-}
+});
 
 module.exports = authentication;
